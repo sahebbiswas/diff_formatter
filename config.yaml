@@ -1,0 +1,37 @@
+# Custom C Code Formatter Guidelines
+# This config defines the style rules for the formatter.
+# The tool will enforce these ONLY on lines modified in the provided diff.
+
+formatting:
+  # Indentation
+  indent_style: spaces          # 'spaces' or 'tabs'
+  indent_size: 4
+
+  # Line length
+  max_line_length: 100
+
+  # Braces (K&R style is common for C)
+  brace_style: knr              # 'knr' (same line), 'allman' (next line), 'stroustrup'
+
+  # Spacing
+  space_after_keywords: true    # if (, for (, while (, switch (
+  space_around_operators: true  # a = b + c  (not a=b+c)
+  space_before_brace: true      # if (...) {
+
+  # Cleanup
+  no_trailing_whitespace: true
+  no_tabs: true                 # if indent_style=spaces
+
+  # Other
+  pointer_style: right          # int* p  or  int *p   ('left', 'right', 'middle')
+
+passive_checks:
+  - trailing_whitespace
+  - line_length
+  - indentation
+  - brace_style
+  - operator_spacing
+  - keyword_spacing
+  - pointer_style
+
+# Future: add more rules like function length, include order, etc.
