@@ -117,4 +117,35 @@ Then just register it — **no changes needed** to `CStyleTool`, `main()`, or th
 
 Add new rules by implementing `_check_xxx` and `_fix_xxx` methods in `CStyleTool` and registering them in `_get_all_rules()`.
 
+## Testing & Regression Protection
+
+A full pytest test suite is included to protect the current featureset against regressions.
+
+### Running the Tests
+
+```bash
+cd /home/workdir/artifacts/c_custom_formatter
+
+# Install dev dependencies
+pip install -r requirements-dev.txt
+
+# Run all tests (verbose)
+pytest tests/ -v
+
+# With coverage
+pytest tests/ --cov=cstyle --cov-report=term-missing
+```
+
+### Test Coverage
+
+- **Diff Providers**: Git and Perforce detection, parsing accuracy, line number mapping, depot path handling, empty/malformed diffs.
+- **Configuration**: Loading, nested keys, defaults, overrides.
+- **Core Tool**: Passive violation reporting, active fixes (keyword spacing, operators, whitespace, pointers), backup creation logic.
+- **CLI**: Argument parsing, error cases, integration smoke tests.
+- **Regression Guards**: Specific tests for Perforce path stripping, hunk line accuracy, ensuring unchanged lines are never modified.
+
+Tests use the existing `examples/` data and are designed to be fast and deterministic. Add new tests when extending providers or rules.
+
+Property-based testing with Hypothesis can be enabled by uncommenting it in requirements-dev.txt for even stronger fuzzing of the parsers.
+
 This tool demonstrates a practical, minimal-diff approach to code formatting in CI/CD or pre-commit hooks.
