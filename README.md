@@ -1,3 +1,5 @@
+[![Python CI](https://github.com/sahebbiswas/diff_formatter/actions/workflows/ci.yml/badge.svg)](https://github.com/sahebbiswas/diff_formatter/actions/workflows/ci.yml)
+
 # Custom C Code Formatter (cstyle)
 
 A lightweight, **diff-aware** C code style checker and formatter.
@@ -32,6 +34,27 @@ python cstyle.py --diff-file changes.diff --mode passive
 # 5. Live commands with the new extensible provider system
 python cstyle.py --git-diff --mode passive
 python cstyle.py --p4-diff --mode passive
+```
+
+## Installation
+
+### Recommended (Modern way)
+
+```bash
+pip install -e .[test]
+```
+
+This installs everything you need (runtime + test dependencies) in editable mode.
+
+### Classic way
+
+```bash
+pip install -r requirements-dev.txt
+```
+
+**Runtime only:**
+```bash
+pip install -r requirements.txt
 ```
 
 ## Configuration (config.yaml)
@@ -149,3 +172,4 @@ Tests use the existing `examples/` data and are designed to be fast and determin
 Property-based testing with Hypothesis can be enabled by uncommenting it in requirements-dev.txt for even stronger fuzzing of the parsers.
 
 This tool demonstrates a practical, minimal-diff approach to code formatting in CI/CD or pre-commit hooks.
+
