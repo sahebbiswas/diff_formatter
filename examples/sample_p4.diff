@@ -1,0 +1,23 @@
+==== examples/sample.c#123 (text) ====
+
+@@ -5,12 +5,12 @@ int main(int argc, char**argv) {
+     int x=5,y=10;
+-    if(x>0){
+-        printf("Positive\n");
+-    } else {
+-        printf("Non-positive\n");
+-    }
++    if(x>0) {
++        printf("Positive\n");
++    } else {
++        printf("Non-positive\n");
++    }
+
+     for(int i=0;i<10;i++) {
+-        // This line is intentionally very very very very very very very very very very very long to test line length rule
++        // This line is intentionally very very very very very very very very very very very long to test line length rule - still long
+         printf("%d\n", i);
+     }
+
+     return 0;
+ }
